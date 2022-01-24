@@ -1,0 +1,133 @@
+*
+    margin: 0
+    padding: 0
+    box-sizing: border-box
+
+$base-color: #ff1500
+$time-display: 100px
+
+html, body,
+.videoContainer
+    width: 100%
+    height: 100%
+    font-family: arial, helvetica, sans-serif
+
+.videoContainer
+    position: relative
+    display: flex
+    justify-content: center
+    align-items: center
+    overflow: hidden
+    > video
+        width: 100%
+
+.videoControls
+    position: absolute
+    bottom: 0
+    left: 0
+    width: 100%
+    padding: 5%
+    background: rgb(0,0,0)
+    background: -moz-linear-gradient(0deg, rgba(0,0,0,0.7) 31%, rgba(0,0,0,0) 100%)
+    background: -webkit-linear-gradient(0deg, rgba(0,0,0,0.7) 31%, rgba(0,0,0,0) 100%)
+    background: linear-gradient(0deg, rgba(0,0,0,0.7) 31%, rgba(0,0,0,0) 100%)
+    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#000000",endColorstr="#000000",GradientType=1)
+    transition: .5s
+    -moz-transition: .5s
+    -webkit-transition: .5s
+    opacity: 1
+
+    &.hide-controls
+        opacity: 0
+
+    .barTimeHolder
+        display: flex
+        justify-content: space-between
+        align-items: center
+
+        .progressBar
+            width: 100%
+            height: 15px
+            border-radius: 5px
+            -moz-border-radius: 5px
+            background: rgba(255,255,255,.2)
+            cursor: pointer
+
+            & > div
+                height: 100%
+                width: 0
+                background: rgba(255,255,255,.3)
+                border-radius: 4px 0 0 4px
+                position: relative
+
+        & .showBar
+
+            & > div:after
+                width: 2px
+                background: #fff
+                height: 20px
+                position: absolute
+                right: 0
+                top: 50%
+                transform: translateY(-50%)
+                content: ""
+
+        .videoTimeDisplay
+            width: $time-display
+            text-align: right
+            color: #fff
+
+    .btns-controlls
+        width: 100%
+        display: flex
+        justify-content: center
+        align-items: center
+        margin-top: 30px
+        padding-right: $time-display
+
+        & > .player-btn
+            margin: 0 10px
+            outline: none
+            border: none
+            background: rgba(255,255,255,.3)
+            width: 65px
+            height: 65px
+            border-radius: 50%
+            -moz-border-radius: 50%
+            -webkit-border-radius: 50%
+            position: relative
+            transition: .5s
+            -moz-transition: .5s
+            -webkit-transition: .5s
+
+        & .focus
+            background: #fff
+            transform: scale(1.05)
+
+        & > .player-btn::after
+            position: absolute
+            text-align: center
+            top: 100%
+            left: 50%
+            transform: translate(-50%, 10px)
+            color: #fff
+            text-transform: uppercase
+            font-size: .7rem
+
+        & > .player-btn[title="play"]::after
+            content: "Play"
+
+        & > .player-btn[title="pause"]::after
+            content: "Pause"
+
+        & > .player-btn[title="prev"]::after
+            content: "Prev"
+
+        & > .player-btn[title="next"]::after
+            content: "Next"
+
+        .settings
+            display: none
+
+.focus
+    box-shadow: 0 0 20px rgba(100,100,100,.5)
